@@ -11,3 +11,190 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+button {
+  height: 30px;
+  width: fit-content;
+  border-radius: 5px;
+  font-weight: bold;
+  background-color: cadetblue;
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 5px 10px;
+}
+
+/*Homepage*/
+.container {
+  position: relative;
+  margin: auto;
+  max-width: 1200px;
+  text-align: center;
+  padding: 30px;
+  top: 110px;
+}
+
+/*Modal*/
+
+
+.start-modal h4 {
+  margin-top: 0;
+}
+
+.start-modal .items {
+  display: flex;
+  margin-bottom: 20px;
+  gap: 15px;
+}
+
+.start-modal .items input {
+  height: 20px;
+}
+
+.start-modal .items label {
+  margin-right: 20px;
+}
+
+.modal-open {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/*header*/
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 16px 0;
+    max-width: 100%;
+    z-index: 100;
+    background-color: #053b7a;
+    -webkit-transition: all 0.35s cubic-bezier(0.45, 0.26, 0, 1);
+    -o-transition: all 0.35s cubic-bezier(0.45, 0.26, 0, 1);
+    transition: all 0.35s cubic-bezier(0.45, 0.26, 0, 1);
+    min-height: 78px;
+}
+
+
+.div-container {
+  display: flex;
+  gap: 30px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.box-table {
+  border: 1px dotted gray;
+  min-width: 50px;
+  min-height: 50px;
+  padding: 10px 20px;
+}
+
+.add-element {
+  margin-top: 30px;
+}
+
+.add-element h5,
+.add-element button {
+  display: inline;
+  margin: 0 10px;
+}
+
+.name-element {
+  display: inline;
+  margin-right: 10px;
+}
+
+.option-element {
+  display: inline;
+  position: relative;
+  display: inline-block;
+  width: 20px; /* Adjust width as needed */
+}
+
+.option-element select {
+  -webkit-appearance: none; /* Hides default arrow in some browsers */
+  -moz-appearance: none;    /* Hides default arrow in some browsers */
+  appearance: none;         /* Hides default arrow */
+  background: none;         /* Removes background */
+  border: none;             /* Removes border */
+  cursor: pointer;          /* Changes cursor to pointer */
+  width: 100%;              /* Makes select full width of wrapper */
+  padding: 0;               /* Removes padding */
+  margin: 0;                /* Removes margin */
+  text-indent: -9999px;     /* Moves text out of visible area */
+}
+
+.option-element::after {
+  content: "▼";             /* Arrow symbol */
+  position: absolute;       /* Positions the arrow */
+  right: 0;                 /* Aligns arrow to the right */
+  top: 50%;                 /* Aligns arrow to the vertical center */
+  transform: translateY(-50%); /* Centers arrow vertically */
+  pointer-events: none;     /* Makes arrow non-interactable */
+  color: black;             /* Sets arrow color */
+}
+
+.added-element {
+  background-color: aquamarine;
+  padding: 5px;
+}
+
+
+
+
+
+/* Modal background */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensures the modal is above other content */
+}
+
+/* Modal content */
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.modal-buttons {
+  margin-top: 15px;
+}
+
+/* Close button */
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Button hover effect */
+.close-button:hover {
+  color: red;
+}
+

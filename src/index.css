@@ -56,9 +56,7 @@ button {
   height: 20px;
 }
 
-.start-modal .items label {
-  margin-right: 20px;
-}
+
 
 .modal-open {
     position: fixed;
@@ -108,6 +106,10 @@ button {
   padding: 10px 20px;
 }
 
+p.title {
+  margin-bottom: 5px;
+}
+
 .add-element {
   margin-top: 30px;
 }
@@ -150,15 +152,29 @@ button {
   top: 50%;                 /* Aligns arrow to the vertical center */
   transform: translateY(-50%); /* Centers arrow vertically */
   pointer-events: none;     /* Makes arrow non-interactable */
-  color: black;             /* Sets arrow color */
+  color: #054368;             /* Sets arrow color */
 }
 
+.container-element {
+  margin: 10px 0;
+}
 .added-element {
-  background-color: aquamarine;
+  background-color: cadetblue;
   padding: 5px;
+  border-radius: 5px;
+  display: inline;
 }
 
-
+.remove-element {
+  background-color: transparent;
+  color: red;
+  width: auto;
+  height: auto;
+  display: inline;
+}
+.vegan-icon {
+  font-size: 16px; /* Adjust size as needed */
+}
 
 
 

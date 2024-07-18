@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 
-export default function StartModal({ updateDiv, numDivs, onClose }) { // Add numDivs prop
+export default function StartModal({ updateDiv, numDivs, onClose }) {
   const [number, setNumber] = useState(1);
   const [name, setName] = useState("");
+  const [isVegan, setIsVegan] = useState(false);
 
   const handleNumberChange = (e) => {
-    const value = Math.min(e.target.value, numDivs); // Ensure value does not exceed numDivs
+    const value = Math.min(e.target.value, numDivs);
     setNumber(value);
   };
 
@@ -13,22 +14,26 @@ export default function StartModal({ updateDiv, numDivs, onClose }) { // Add num
     setName(e.target.value);
   };
 
+  const handleVeganChange = (e) => {
+    setIsVegan(e.target.checked);
+  };
+
   const handleSubmit = () => {
-    updateDiv(number, name);
+    updateDiv(number, name, isVegan);
     onClose();
   };
 
   return (
     <div className="start-modal">
-      <h4>Adauga un element</h4>
+      <h4>Adauga un invitat</h4>
       <div className="items">
-      <label>Numar masa</label>
+        <label>Numar masa</label>
         <input
           type="number"
           value={number}
           onChange={handleNumberChange}
           min="1"
-          max={numDivs} // Set max attribute based on numDivs
+          max={numDivs}
         />
       </div>
       <div className="items">
@@ -39,6 +44,16 @@ export default function StartModal({ updateDiv, numDivs, onClose }) { // Add num
           onChange={handleNameChange}
           placeholder="Introdu numele"
         />
+      </div>
+      <div className="items">
+        <label>
+          Este vegan
+        </label>
+        <input
+            type="checkbox"
+            checked={isVegan}
+            onChange={handleVeganChange}
+          />
       </div>
       <div className="modal-buttons">
         <button onClick={handleSubmit}>Adauga</button>

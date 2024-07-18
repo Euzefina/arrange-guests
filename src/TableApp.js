@@ -6,7 +6,7 @@ function DivGenerator() {
   const [divs, setDivs] = useState([]);
 
   const handleChange = (e) => {
-    const value = Math.min(e.target.value, 15); // Ensure value does not exceed 15
+    const value = Math.min(e.target.value, 15);
     setNumDivs(value);
   };
 
@@ -18,9 +18,16 @@ function DivGenerator() {
     setDivs(newDivs);
   };
 
-  const updateDiv = (number, name) => {
+  const updateDiv = (number, name, isVegan) => {
     const updatedDivs = divs.map((div) =>
-      div.number === number ? { ...div, names: [...div.names, name] } : div
+      div.number === number ? { ...div, names: [...div.names, { name, isVegan }] } : div
+    );
+    setDivs(updatedDivs);
+  };
+
+  const removeElement = (number, name) => {
+    const updatedDivs = divs.map((div) =>
+      div.number === number ? { ...div, names: div.names.filter((n) => n.name !== name) } : div
     );
     setDivs(updatedDivs);
   };
@@ -28,9 +35,10 @@ function DivGenerator() {
   const changeTableNumber = (oldNumber, newNumber, name) => {
     const updatedDivs = divs.map((div) => {
       if (div.number === oldNumber) {
-        return { ...div, names: div.names.filter((n) => n !== name) };
+        return { ...div, names: div.names.filter((n) => n.name !== name) };
       } else if (div.number === newNumber) {
-        return { ...div, names: [...div.names, name] };
+        const guest = divs.find((d) => d.number === oldNumber).names.find((n) => n.name === name);
+        return { ...div, names: [...div.names, guest] };
       }
       return div;
     });
@@ -46,36 +54,40 @@ function DivGenerator() {
         onChange={handleChange}
         placeholder="Introdu numarul de mese"
         min="1"
-        max="15" // Set max attribute to 15
-      /> 
+        max="15"
+      />
       <button onClick={createDivs}>OK</button>
       <div className="div-container">
         {divs.map((div) => (
           <div key={div.id} className="box-table">
-            <strong>Masa {div.number}</strong>
-            {div.names.map((name, idx) => (
-              <div className="added-element" key={idx}>
-                <p className="name-element">{name}</p>
-                <div className="option-element">
-                  <div className="select-wrapper">
-                    <select
-                      value={div.number}
-                      onChange={(e) => changeTableNumber(div.number, parseInt(e.target.value), name)}
-                    >
-                      {divs.map((d) => (
-                        <option key={d.id} value={d.number}>
-                          Masa {d.number}
-                        </option>
-                      ))}
-                    </select>
+            <p className="title"><strong>Masa {div.number}</strong></p>
+            {div.names.map((guest, idx) => (
+              <div className="container-element" key={idx}>
+                <div className="added-element">
+                  <p className="name-element">{guest.name}</p>
+                  {guest.isVegan && <span className="vegan-icon">🥗</span>}
+                  <div className="option-element">
+                    <div className="select-wrapper">
+                      <select
+                        value={div.number}
+                        onChange={(e) => changeTableNumber(div.number, parseInt(e.target.value), guest.name)}
+                      >
+                        {divs.map((d) => (
+                          <option key={d.id} value={d.number}>
+                            Masa {d.number}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
                   </div>
                 </div>
+                <button className="remove-element" onClick={() => removeElement(div.number, guest.name)}>x</button>
               </div>
             ))}
           </div>
         ))}
       </div>
-      {divs.length > 0 && <ElementAdd updateDiv={updateDiv} numDivs={numDivs} />} {/* Pass numDivs as a prop */}
+      {divs.length > 0 && <ElementAdd updateDiv={updateDiv} numDivs={numDivs} />}
     </div>
   );
 }

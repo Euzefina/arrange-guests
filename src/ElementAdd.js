@@ -15,7 +15,7 @@ export default function ElementAdd({ updateDiv, numDivs }) {  // Add numDivs pro
 
   return (
     <div className="add-element">
-      <h5>Adauga element</h5>
+      <h5>Adauga invitat</h5>
       <button type="button" onClick={handleOpen}>
         +
       </button>

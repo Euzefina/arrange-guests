@@ -12,6 +12,11 @@ code {
     monospace;
 }
 
+p {
+  margin: 0;
+  padding: 0;
+}
+
 button {
   height: 30px;
   width: fit-content;
@@ -77,13 +82,17 @@ button {
     padding: 16px 0;
     max-width: 100%;
     z-index: 100;
-    background-color: #053b7a;
     -webkit-transition: all 0.35s cubic-bezier(0.45, 0.26, 0, 1);
     -o-transition: all 0.35s cubic-bezier(0.45, 0.26, 0, 1);
     transition: all 0.35s cubic-bezier(0.45, 0.26, 0, 1);
     min-height: 78px;
+    text-align: center;
 }
-
+.logo {
+  max-width: 78px;
+  max-height: 78px;
+  margin-left: 15px;
+}
 
 .div-container {
   display: flex;
@@ -197,4 +206,3 @@ button {
 .close-button:hover {
   color: red;
 }
-

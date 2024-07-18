@@ -39,6 +39,7 @@ function DivGenerator() {
 
   return (
     <div>
+      <label>Introdu numarul de mese: </label>
       <input
         type="number"
         value={numDivs}
@@ -46,8 +47,8 @@ function DivGenerator() {
         placeholder="Introdu numarul de mese"
         min="1"
         max="15" // Set max attribute to 15
-      />
-      <button onClick={createDivs}>Genereaza</button>
+      /> 
+      <button onClick={createDivs}>OK</button>
       <div className="div-container">
         {divs.map((div) => (
           <div key={div.id} className="box-table">
